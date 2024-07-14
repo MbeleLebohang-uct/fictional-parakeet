@@ -18,11 +18,6 @@ const columns: ColumnsType<Farm> = [
         key: 'orchard_count',
     },
     {
-        title: 'Total hectares',
-        dataIndex: 'total_hectares',
-        key: 'total_hectares',
-    },
-    {
         title: 'Grouping',
         key: 'grouping',
         dataIndex: 'grouping',
@@ -36,6 +31,11 @@ const columns: ColumnsType<Farm> = [
                 </>
             );
         },
+    },
+    {
+        title: 'Total hectares',
+        dataIndex: 'total_hectares',
+        key: 'total_hectares',
     }
 ];
 
