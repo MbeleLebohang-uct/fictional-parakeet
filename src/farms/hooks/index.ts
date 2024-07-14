@@ -1,1 +1,1 @@
-export { default as useFetchFarms } from './useFetchFarms';
+export * from './useFetchFarms';

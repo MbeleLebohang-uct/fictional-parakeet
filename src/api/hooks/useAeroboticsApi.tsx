@@ -7,17 +7,15 @@ import { ApiResponse, EApiActionState } from "../domain";
 interface AeroboticsApiProps {
   method: Method
   endpoint: string
-}
+} 
 
-const useAeroboticsApi = <T,>({ method, endpoint } : AeroboticsApiProps): ApiResponse<T> => {
+export const useAeroboticsApi = <T,>({ method, endpoint } : AeroboticsApiProps): ApiResponse<T> => {
   const [state, dispatch] = useReducer<typeof apiResponseReducer<T>>(
     apiResponseReducer, 
     { apiActionState: EApiActionState.Loading }
   );
- 
+  
   useEffect(() => {
-    dispatch({ apiActionState: EApiActionState.Loading });
-
     axios<T>(`${AEROBOTICS_API_URI_BASE}/${endpoint}`, { headers: {...AEROBOTICS_API_BASE_HEADERS}, method })
       .then((response) => {
         dispatch({ apiActionState: EApiActionState.Fetched, response: response.data });
@@ -29,5 +27,3 @@ const useAeroboticsApi = <T,>({ method, endpoint } : AeroboticsApiProps): ApiRes
 
   return state;
 };
-
-export default useAeroboticsApi;

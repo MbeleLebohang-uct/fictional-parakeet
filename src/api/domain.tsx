@@ -1,3 +1,5 @@
+import { Method } from "axios";
+
 export enum EApiActionState {
     Loading = 'loading',
     Fetched = 'fetched',
@@ -21,3 +23,8 @@ export type AeroboticsApiResponse<T> = {
     previous: string | null;
     results: T[];
 };
+
+export interface APIEndPointInfo {
+    method: Method
+    endpoint: (response?: unknown) => string
+}

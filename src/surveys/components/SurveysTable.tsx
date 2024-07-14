@@ -1,7 +1,7 @@
 import Table, { ColumnsType } from 'antd/es/table';
 import React from 'react'
 import { Tag } from 'antd';
-import { AeroboticsApiResponse, EApiActionState } from '../../api';
+import { AeroboticsApiResponse, EApiActionState } from '../../api/domain';
 import { Survey } from '../domain';
 import { format } from 'date-fns';
 import { useFetchSurveys } from '../hooks';

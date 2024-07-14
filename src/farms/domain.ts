@@ -8,9 +8,4 @@ export type Farm = {
     grouping: string | null;
 };
 
-export type FarmsResponse = {
-    count: number;
-    next: string | null;
-    previous: string | null;
-    results: Farm[];
-};
+

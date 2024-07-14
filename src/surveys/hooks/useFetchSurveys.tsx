@@ -1,7 +1,6 @@
-import { ApiResponse, useAeroboticsApi } from '../../api';
+import { ApiResponse } from '../../api/domain';
+import { useAeroboticsApi } from '../../api/hooks';
 
-const useFetchSurveys = <T,>(): ApiResponse<T> => {
+export const useFetchSurveys = <T,>(): ApiResponse<T> => {
   return useAeroboticsApi<T>({endpoint: 'farming/surveys/', method: 'GET'});
 };
-
-export default useFetchSurveys;

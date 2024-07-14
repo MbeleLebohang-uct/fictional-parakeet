@@ -1,7 +1,7 @@
 import { SetStateAction, useState } from "react";
 import { UseLocalStorage } from "../domain";
 
-export default function useLocalStorage<T>(
+export function useLocalStorage<T>(
   key: string,
   initialValue: SetStateAction<T>,
 ): UseLocalStorage<T> {

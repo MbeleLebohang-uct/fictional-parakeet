@@ -1,7 +1,7 @@
 import React from "react";
 
 import { defaultThemeMode, themeModeLocalStorageKey, DefaultThemeMode } from "./consts";
-import useLocalStorage from "../hooks/useLocalStorage";
+import { useLocalStorage } from "../hooks";
 
 type ThemeProviderProps = {
   children: React.ReactNode;

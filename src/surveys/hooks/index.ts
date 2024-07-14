@@ -1,1 +1,1 @@
-export { default as useFetchSurveys } from './useFetchSurveys';
+export * from './useFetchSurveys'; 
