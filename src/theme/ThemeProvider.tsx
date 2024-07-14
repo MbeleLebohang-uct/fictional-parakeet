@@ -1,7 +1,7 @@
 import React from "react";
 
 import { defaultTheme, localStorageKey } from "./consts";
-import { DefaultTheme } from "./hook";
+import { DefaultTheme } from "./useTheme";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 type ThemeProviderProps = {

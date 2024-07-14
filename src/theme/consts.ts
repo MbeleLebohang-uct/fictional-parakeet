@@ -1,4 +1,4 @@
-import { DefaultTheme } from "./hook";
+import { DefaultTheme } from "./useTheme";
 
 export const localStorageKey = "activeAeroboticsUITheme";
 export const defaultTheme: DefaultTheme = "light";

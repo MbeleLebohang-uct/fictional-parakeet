@@ -1,7 +1,7 @@
 import { Layout } from 'antd';
 import React, { useState } from 'react'
+import MenuList from './components/MenuList';
 import Logo from './components/Logo';
-import MenuList from './components/Menu/MenuList';
 import { useTheme } from './theme';
 
 const { Sider } = Layout;

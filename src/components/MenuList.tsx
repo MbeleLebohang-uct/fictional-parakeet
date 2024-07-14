@@ -1,7 +1,7 @@
 import { Menu, MenuProps } from 'antd'
 import React from 'react'
 import { HomeOutlined, AreaChartOutlined, TeamOutlined, SettingOutlined } from '@ant-design/icons';
-import { useTheme } from '../../theme';
+import { useTheme } from '../theme';
 
 type MenuItem = Required<MenuProps>['items'][number];
 

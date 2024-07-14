@@ -1,8 +1,8 @@
 import React from 'react'
-import { WindowTitle } from './components/WindowTitle';
 import { HelmetProvider } from 'react-helmet-async';
 import AppMenu from './AppMenu';
-import ThemeProvider from './theme/provider';
+import ThemeProvider from './theme/ThemeProvider';
+import { WindowTitle } from './components/WindowTitle';
 
 const App: React.FC = () => {
   return (
