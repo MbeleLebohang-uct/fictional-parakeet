@@ -3,9 +3,7 @@ import { FarmsTable } from '../farms'
 
 const HomePage: React.FC = () => {
   return (
-    <div>
-      <FarmsTable/>
-    </div>
+    <FarmsTable />
   )
 }
 

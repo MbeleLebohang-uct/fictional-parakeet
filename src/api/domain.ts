@@ -14,3 +14,10 @@ export interface ApiResponse<T> {
     data?: T;
     error?: Error;
 }
+
+export type AeroboticsApiResponse<T> = {
+    count: number;
+    next: string | null;
+    previous: string | null;
+    results: T[];
+};

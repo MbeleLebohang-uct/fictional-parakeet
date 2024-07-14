@@ -1,8 +1,8 @@
 import Table, { ColumnsType } from 'antd/es/table';
 import React from 'react'
-import { Farm, FarmsResponse } from '../domain';
+import { Farm } from '../domain';
 import { Tag } from 'antd';
-import { EApiActionState } from '../../api';
+import { AeroboticsApiResponse, EApiActionState } from '../../api';
 import { useFetchFarms } from '../hooks';
 
 const columns: ColumnsType<Farm> = [
@@ -22,7 +22,7 @@ const columns: ColumnsType<Farm> = [
         key: 'grouping',
         dataIndex: 'grouping',
         render: (_, { grouping }) => {
-            const color = grouping ? 'grey-2' : 'geekblue'
+            const color = grouping ?  'green' : 'volcano'
             return (
                 <>
                     <Tag color={color} key={grouping}>
@@ -40,7 +40,7 @@ const columns: ColumnsType<Farm> = [
 ];
 
 const FarmsTable: React.FC = () => {
-    const { data, apiActionState, error } = useFetchFarms<FarmsResponse>();
+    const { data, apiActionState, error } = useFetchFarms<AeroboticsApiResponse<Farm>>();
     if (apiActionState === EApiActionState.Loading) {
         return (
             <div>
