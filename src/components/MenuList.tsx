@@ -3,12 +3,10 @@ import { Menu, MenuProps } from 'antd'
 import React from 'react'
 import { HomeOutlined, AreaChartOutlined, TeamOutlined, SettingOutlined } from '@ant-design/icons';
 import { DefaultThemeMode } from '../theme';
-import { EApplicationPageOption } from '../domain/EApplicationPageOption';
 import { MenuInfo } from 'rc-menu/lib/interface';
+import { EApplicationPageOption } from '../domain';
 
 type MenuItem = Required<MenuProps>['items'][number];
-
-
 
 interface MenuListProps {
   themeMode: DefaultThemeMode

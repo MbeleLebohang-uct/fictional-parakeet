@@ -1,0 +1,1 @@
+export { default as FarmsTable } from './FarmsTable'

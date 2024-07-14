@@ -1,4 +1,4 @@
-export * from './HomePage'
-export * from './PoliciesPage'
-export * from './SettingsPage'
-export * from './SurveysPage'
+export { default as HomePage } from './HomePage'
+export { default as PoliciesPage } from './PoliciesPage'
+export { default as SettingsPage } from './SettingsPage'
+export { default as SurveysPage } from './SurveysPage'

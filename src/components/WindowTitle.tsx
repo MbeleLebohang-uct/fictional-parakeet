@@ -5,6 +5,8 @@ interface WindowTitleProps {
   title: string;
 }
 
-export const WindowTitle: React.FC<WindowTitleProps> = ({ title }) => {
+const WindowTitle: React.FC<WindowTitleProps> = ({ title }) => {
   return  <Helmet title={`Aerobotics | ${title}`} />
 };
+
+export default WindowTitle;

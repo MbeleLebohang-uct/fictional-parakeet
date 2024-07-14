@@ -1,7 +1,7 @@
 import { Button } from 'antd'
 import React from 'react'
-import { DefaultThemeMode } from '../theme'
 import { SunOutlined, MoonOutlined } from '@ant-design/icons'
+import { DefaultThemeMode } from '../theme'
 
 interface ToggleButtonProps {
     themeMode: DefaultThemeMode

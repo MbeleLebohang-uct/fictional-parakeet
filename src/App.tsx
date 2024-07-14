@@ -1,17 +1,14 @@
 import React from 'react'
 import { HelmetProvider } from 'react-helmet-async';
+import { WindowTitle } from './components';
+import { ThemeProvider } from './theme';
 import AppMenu from './AppMenu';
-import ThemeProvider from './theme/ThemeProvider';
-import { WindowTitle } from './components/WindowTitle';
-import RestClientProvider from './farms/providers/RestClientProvider';
 
 const App: React.FC = () => {
   return (
     <HelmetProvider>
       <ThemeProvider>
-        <RestClientProvider>
           <Routes />
-        </RestClientProvider>
       </ThemeProvider>
     </HelmetProvider>
   )

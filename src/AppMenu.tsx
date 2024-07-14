@@ -4,11 +4,8 @@ import MenuList from './components/MenuList';
 import Logo from './components/Logo';
 import ThemeToggleButton from './components/ThemeToggleButton';
 import { useThemeMode } from './theme';
-import HomePage from './pages/HomePage';
-import SurveysPage from './pages/SurveysPage';
-import PoliciesPage from './pages/PoliciesPage';
-import SettingsPage from './pages/SettingsPage';
-import { EApplicationPageOption } from './domain/EApplicationPageOption';
+import { EApplicationPageOption } from './domain';
+import { HomePage, SurveysPage, PoliciesPage, SettingsPage } from './pages';
 const { Sider, Header, Content } = Layout;
 
 const AppMenu: React.FC = () => {

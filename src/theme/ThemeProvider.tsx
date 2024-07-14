@@ -1,7 +1,6 @@
 import React from "react";
 
-import { defaultThemeMode, themeModeLocalStorageKey } from "./consts";
-import { DefaultThemeMode } from "./useThemeMode";
+import { defaultThemeMode, themeModeLocalStorageKey, DefaultThemeMode } from "./consts";
 import useLocalStorage from "../hooks/useLocalStorage";
 
 type ThemeProviderProps = {

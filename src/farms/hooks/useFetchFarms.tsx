@@ -1,39 +1,25 @@
-import { useState, useEffect } from 'react';
-import axios, { RawAxiosRequestHeaders } from 'axios';
-import { FetchState } from '../domain';
+import { useEffect, useReducer } from 'react';
+import axios from 'axios';
+import { AEROBOTICS_API_HEADERS, AEROBOTICS_API_URI_BASE } from '../../api/const';
+import { ApiResponse, apiResponseReducer, EApiActionState } from '../../api';
 
-
-const useFetchFarms = <T,>(url: string, headers?: RawAxiosRequestHeaders): FetchState<T> => {
-  const [state, setState] = useState<FetchState<T>>({
-    data: null,
-    loading: true,
-    error: null,
-  });
+const useFetchFarms = <T,>(): ApiResponse<T> => {
+  const [state, dispatch] = useReducer<typeof apiResponseReducer<T>>(
+    apiResponseReducer, 
+    { apiActionState: EApiActionState.Loading }
+  );
  
   useEffect(() => {
-    let isMounted = true;
-    setState({ data: null, loading: true, error: null });
+    dispatch({ apiActionState: EApiActionState.Loading });
 
-    axios(url, { headers })
+    axios<T>(`${AEROBOTICS_API_URI_BASE}/farming/farms/`, { headers: AEROBOTICS_API_HEADERS })
       .then((response) => {
-        if (isMounted) {
-          setState({ data: response.data, loading: false, error: null });
-        }
+        dispatch({ apiActionState: EApiActionState.Fetched, response: response.data });
       })
       .catch((error) => {
-        if (isMounted) {
-          setState({
-            data: null,
-            loading: false,
-            error: error?.message || 'An error occurred',
-          });
-        }
+        dispatch({ apiActionState: EApiActionState.Error, response: error || Error('An error occurred') });
       });
-
-    return () => {
-      isMounted = false;
-    };
-  }, [url, headers]);
+  }, []);
 
   return state;
 };
