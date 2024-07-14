@@ -1,4 +1,4 @@
-import { DefaultTheme } from "./useTheme";
+import {  DefaultThemeMode } from "./useThemeMode";
 
-export const localStorageKey = "activeAeroboticsUITheme";
-export const defaultTheme: DefaultTheme = "light";
+export const themeModeLocalStorageKey = "activeAeroboticsUIThemeMode";
+export const defaultThemeMode: DefaultThemeMode = "light";

@@ -1,21 +1,52 @@
-import { Layout } from 'antd';
+import { Layout, Row, theme } from 'antd';
 import React, { useState } from 'react'
 import MenuList from './components/MenuList';
 import Logo from './components/Logo';
-import { useTheme } from './theme';
-
-const { Sider } = Layout;
+import ThemeToggleButton from './components/ThemeToggleButton';
+import { useThemeMode } from './theme';
+import HomePage from './pages/HomePage';
+import SurveysPage from './pages/SurveysPage';
+import PoliciesPage from './pages/PoliciesPage';
+import SettingsPage from './pages/SettingsPage';
+import { EApplicationPageOption } from './domain/EApplicationPageOption';
+const { Sider, Header, Content } = Layout;
 
 const AppMenu: React.FC = () => {
+    const [activePage, setActivePage] = useState(EApplicationPageOption.Home);
     const [collapsed, setCollapsed] = useState(true);
-    const { theme } = useTheme();
+    const { themeMode, setThemeMode } = useThemeMode();
+    const { token: { colorBgContainer } } = theme.useToken();
+
+    const getActivePage = () => {
+        switch (activePage) {
+            case EApplicationPageOption.Home:
+                return <HomePage />
+            case EApplicationPageOption.Surveys:
+                return <SurveysPage />
+            case EApplicationPageOption.Policies:
+                return <PoliciesPage />
+            case EApplicationPageOption.Settings:
+                return <SettingsPage />
+        }
+    }
 
     return (
         <Layout style={{ minHeight: '100vh' }}>
-            <Sider className='v-sidebar' collapsedWidth='60' theme={theme} collapsible collapsed={collapsed} onCollapse={setCollapsed}>
+            <Sider
+                className='v-sidebar' theme={themeMode} collapsible collapsed={collapsed} onCollapse={setCollapsed}>
                 <Logo />
-                <MenuList />
+                <MenuList themeMode={themeMode} setActivePage={setActivePage} activePage={activePage} />
             </Sider>
+            <Layout>
+                <Header style={{ background: colorBgContainer }}>
+                    <Row justify={'end'} align={'middle'} style={{ height: '100%' }}>
+                        <ThemeToggleButton themeMode={themeMode} setThemeMode={setThemeMode} />
+                    </Row>
+                </Header>
+                <Content style={{ margin: '20px 16px', background: colorBgContainer, minHeight: 280, borderRadius: 4, padding: 24 }}>
+                    {getActivePage()}
+                </Content>
+            </Layout>
         </Layout>
     )
 }

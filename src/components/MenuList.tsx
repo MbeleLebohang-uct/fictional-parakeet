@@ -1,22 +1,31 @@
 import { Menu, MenuProps } from 'antd'
+
 import React from 'react'
 import { HomeOutlined, AreaChartOutlined, TeamOutlined, SettingOutlined } from '@ant-design/icons';
-import { useTheme } from '../theme';
+import { DefaultThemeMode } from '../theme';
+import { EApplicationPageOption } from '../domain/EApplicationPageOption';
+import { MenuInfo } from 'rc-menu/lib/interface';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
-const items: MenuItem[] = [
-    {key: '1', icon: React.createElement(HomeOutlined), label: 'Home'},
-    {key: '2', icon: React.createElement(AreaChartOutlined), label: 'Orchards'},
-    {key: '3', icon: React.createElement(TeamOutlined), label: 'Policies'},
-    {key: '4', icon: React.createElement(SettingOutlined), label: 'Settings'},
-]
 
-const MenuList: React.FC = () => {
-  const { theme } = useTheme();
 
+interface MenuListProps {
+  themeMode: DefaultThemeMode
+  setActivePage: React.Dispatch<React.SetStateAction<EApplicationPageOption>>
+  activePage: EApplicationPageOption
+}
+
+const MenuList: React.FC<MenuListProps> = ({ themeMode, setActivePage, activePage } : MenuListProps) => {
+  const onClick =  (info: MenuInfo) => setActivePage(info.key as EApplicationPageOption)
+  const items: MenuItem[] = [
+    {key: EApplicationPageOption.Home, icon: React.createElement(HomeOutlined), label: EApplicationPageOption.Home, onClick},
+    {key: EApplicationPageOption.Surveys, icon: React.createElement(AreaChartOutlined), label: EApplicationPageOption.Surveys, onClick},
+    {key: EApplicationPageOption.Policies, icon: React.createElement(TeamOutlined), label: EApplicationPageOption.Policies, onClick},
+    {key: EApplicationPageOption.Settings, icon: React.createElement(SettingOutlined), label: EApplicationPageOption.Settings, onClick},
+  ]
   return (
-    <Menu theme={theme} defaultSelectedKeys={['1']} items={items} />
+    <Menu theme={themeMode} defaultSelectedKeys={[activePage]} items={items} />
   )
 }
 
