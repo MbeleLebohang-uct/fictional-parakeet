@@ -1,4 +1,5 @@
 import { Farm } from "./Farm";
+import { Survey } from "./Survey";
 
 export type Orchard = {
     id: number,
@@ -8,6 +9,8 @@ export type Orchard = {
     crop_type_name: string,
     polygon: string,
     hectares: number,
+    survey_count: number | null,
     cultivar_name: string,
     external_id: string | null,
+    surveys: Survey[] | undefined;
 };
