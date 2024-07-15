@@ -1,9 +1,8 @@
 import React from 'react'
-import { SurveysTable } from '../surveys'
 
 const SurveysPage: React.FC = () => {
   return (
-    <SurveysTable />
+    <h1>Surveys</h1>
   )
 }
 

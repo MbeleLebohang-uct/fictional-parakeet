@@ -1,16 +1,10 @@
-export type Survey = {
-    id: number;
-    name: string;
-    orchard_id: number;
-    date: string;
-    hectares: number;
-    polygon: string;
-};
+import { Farm } from "./Farm";
 
 export type Orchard = {
     id: number,
     name: string,
     farm_id: number,
+    farm: Farm | undefined,
     crop_type_name: string,
     polygon: string,
     hectares: number,

@@ -1,9 +1,9 @@
 import React from 'react'
-import { FarmsTable } from '../farms'
+import HomeDataTable from './components/HomeDataTable'
 
 const HomePage: React.FC = () => {
   return (
-    <FarmsTable />
+    <HomeDataTable />
   )
 }
 

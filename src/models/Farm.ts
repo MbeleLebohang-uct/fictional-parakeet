@@ -1,3 +1,5 @@
+import { Orchard } from "./Orchard";
+
 export type Farm = {
     id: number;
     name: string;
@@ -6,6 +8,5 @@ export type Farm = {
     total_hectares: number;
     external_id: number | null;
     grouping: string | null;
+    orchards: Orchard[] | undefined
 };
-
-
