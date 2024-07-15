@@ -2,7 +2,8 @@ import Table, { ColumnsType } from 'antd/es/table';
 import React from 'react'
 import { Orchard } from '../../models';
 import { useQueryHomeData } from '../../hooks/useQueryHomeData';
-import SurveyCount from './SurveyCount';
+import TotalTreesSurveyed from './TotalTreesSurveyed';
+import LatestSurveyDate from './LatestSurveyDate';
 
 
 const columns: ColumnsType<Orchard> = [
@@ -22,21 +23,22 @@ const columns: ColumnsType<Orchard> = [
         title: 'Total trees surveyed',
         dataIndex: 'total_trees_surveyed',
         key: 'total_trees_surveyed',
-        render: (_, orchard) => <SurveyCount orchard={orchard}/>
+        render: (_, orchard) => <TotalTreesSurveyed orchard={orchard} />
+    },
+    {
+        title: 'Latest survey date',
+        dataIndex: 'latest_survey_date',
+        key: 'latest_survey_date',
+        render: (_, orchard) => <LatestSurveyDate orchard={orchard} />
     },
 ];
 
 
 const HomeDataTable: React.FC = () => {
     const { isLoading, isError, error, data: results } = useQueryHomeData();
-    if (isLoading) {
+    if (isLoading || isError) {
         return (
-            <div>Loading...</div>
-        )
-    }
-    if (isError) {
-        return (
-            <div>{JSON.stringify(error)}</div>
+            <div>{isError ? JSON.stringify(error) : 'Loading...'}</div>
         )
     }
     return (
