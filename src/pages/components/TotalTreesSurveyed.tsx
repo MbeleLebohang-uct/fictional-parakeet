@@ -1,27 +1,31 @@
 import React from 'react'
 import { Orchard } from '../../models'
-import { useQuerySurveys } from '../../hooks/useQuerySurveys';
+import { useQueryTreeSurveys } from '../../hooks/useQueryTreeSurveys';
+import { Tag } from 'antd';
 
 interface TotalTreesSurveyedProps {
   orchard: Orchard
 }
 
-// todo
-// use useCompoundQuery to get 
-// 1. Survey given an orchard
-// 2. for each survey, get /surveys/{id}/tree_surveys/
-// use the results to calculate the average and count trees
-
 const TotalTreesSurveyed: React.FC<TotalTreesSurveyedProps> = ({ orchard }: TotalTreesSurveyedProps) => {
-  const { isLoading, isError, data: results } = useQuerySurveys({ orchard });
-  if (isLoading || isError) {
+  const { isLoading, isError, data: results } = useQueryTreeSurveys({ orchard });
+
+  if (isLoading) {
     return (
-      <div>{isError ? 'error' : '-'}</div>
+      <div>{'-'}</div>
     )
   }
+
+  if(isError){
+    return (
+      <Tag color={'volcano'} key={`${orchard.id}`}>
+        {'NO RESULTS'}
+      </Tag>
+    )
+  }
+
   return (
-    // <div>{results?.data.count}</div>
-    <div>TotalTreesSurveyed</div>
+    <div>{results.length}</div>
   )
 }
 

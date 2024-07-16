@@ -19,7 +19,7 @@ const LatestSurveyDate: React.FC<LatestSurveyDateProps> = ({ orchard }: LatestSu
   const color = sortedResults.length > 0 ? 'green' : 'volcano'
   return (
     <>
-      <Tag color={color} key={`${orchard.id}-${sortedResults[0].id}`}>
+      <Tag color={color} key={`${orchard.id}-${sortedResults[0]?.id}`}>
         {sortedResults.length > 0 ? format(new Date(sortedResults[0].date), 'yyyy-MM-dd') : 'NO SURVEYS'}
       </Tag>
     </>

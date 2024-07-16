@@ -1,30 +1,31 @@
-import { QueryFunction, QueryKey, useQuery, UseQueryResult } from 'react-query';
+import { QueryKey, useQuery, UseQueryResult } from 'react-query';
 import { AxiosResponse } from 'axios';
 import { AeroboticsApiResponse } from '../domain';
 
 
-interface CompoundQueryParams<A, B, R> {
+interface CompoundQueryParams<R> {
     queryKey1: QueryKey,
-    queryKey2: (response: AxiosResponse<AeroboticsApiResponse<A>> | undefined) => QueryKey,
-    queryFn1: QueryFunction<AxiosResponse<AeroboticsApiResponse<A>, any>, QueryKey>,
-    queryFn2: QueryFunction<AxiosResponse<AeroboticsApiResponse<B>, any>, QueryKey>,
-    select: (response1: AxiosResponse<AeroboticsApiResponse<A>>, response2: AxiosResponse<AeroboticsApiResponse<B>, any>) => R
+    queryKey2: (response: any) => QueryKey,
+    queryFn1: any,
+    queryFn2: any,
+    select: (response1: any, response2: any) => R
 }
 
-export const useCompoundQuery = <A, B, R>({ queryKey1, queryKey2, queryFn1, queryFn2, select } : CompoundQueryParams<A, B, R>): UseQueryResult<R> => {
-    const { data: response1, isLoading: isLoadingFarms, isError: isErrorFarms, error: errorFarms } = useQuery<AxiosResponse<AeroboticsApiResponse<A>>>(
+export const useCompoundQuery = <R,>({ queryKey1, queryKey2, queryFn1, queryFn2, select } : CompoundQueryParams<R>): UseQueryResult<R> => {
+    const { data: response1, isLoading: isLoadingFarms, isError: isErrorFarms, error: errorFarms } = useQuery<AxiosResponse<AeroboticsApiResponse<any>>>(
         queryKey1,
         queryFn1,
-        { refetchOnWindowFocus: 'always' }
+        { refetchOnWindowFocus: false, staleTime: 1000000}
     )
 
     const { data: orchards, error, isError, isLoading, ...others } = useQuery(
         queryKey2(response1),
         queryFn2,
         {
-            refetchOnWindowFocus: 'always',
+            refetchOnWindowFocus: false,
+            staleTime: 1000000,
             enabled: !!response1,
-            select: (response2: AxiosResponse<AeroboticsApiResponse<B>>) => select(response1!, response2)
+            select: (response2) => select(response1!, response2)
         }
     )
 
