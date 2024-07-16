@@ -1,4 +1,5 @@
 import { Orchard } from "./Orchard";
+import { TreeSurvey } from "./TreeSurvey";
 
 export type Survey = {
     id: number;
@@ -8,4 +9,5 @@ export type Survey = {
     date: string;
     hectares: number;
     polygon: string;
+    tree_surveys: TreeSurvey | undefined;
 };

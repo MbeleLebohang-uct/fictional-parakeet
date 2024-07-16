@@ -6,7 +6,7 @@ interface TotalTreesSurveyedProps {
   orchard: Orchard
 }
 
-todo
+// todo
 // use useCompoundQuery to get 
 // 1. Survey given an orchard
 // 2. for each survey, get /surveys/{id}/tree_surveys/
@@ -20,7 +20,8 @@ const TotalTreesSurveyed: React.FC<TotalTreesSurveyedProps> = ({ orchard }: Tota
     )
   }
   return (
-    <div>{results?.data.count}</div>
+    // <div>{results?.data.count}</div>
+    <div>TotalTreesSurveyed</div>
   )
 }
 
