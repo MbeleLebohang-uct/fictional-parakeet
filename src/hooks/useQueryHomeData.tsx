@@ -1,8 +1,9 @@
-import { useQuery, UseQueryResult } from 'react-query';
+import { UseQueryResult } from 'react-query';
 import axios, { AxiosResponse } from 'axios';
 import { AeroboticsApiResponse } from '../domain';
 import { AEROBOTICS_API_URI_BASE, AEROBOTICS_API_BASE_HEADERS } from '../const';
 import { Farm, Orchard } from '../models';
+import { useCompoundQuery } from './useCompoundQuery';
 
 export const useQueryHomeData = (): UseQueryResult<Orchard[] | undefined> => {
     const fetchFarms = async () => {
@@ -13,6 +14,18 @@ export const useQueryHomeData = (): UseQueryResult<Orchard[] | undefined> => {
         return await axios(`${AEROBOTICS_API_URI_BASE}/farming/orchards/?farm_id__in=${encodedFarmIds}`, { headers: { ...AEROBOTICS_API_BASE_HEADERS }, method: 'GET' })
     }
 
+    return useCompoundQuery<Farm, Orchard, Orchard[]>({
+        queryFn1: fetchFarms,
+        queryFn2: fetchOrchards,
+        queryKey1: ['query-home-farms'],
+        queryKey2: (farms: AxiosResponse<AeroboticsApiResponse<Farm>, any> | undefined) => ['query-home-orchards', farms?.data.results.map(farm => farm.id)],
+        select: (farms: AxiosResponse<AeroboticsApiResponse<Farm>>, response: AxiosResponse<AeroboticsApiResponse<Orchard>>) => {
+            const farmIdMap = new Map<number, Farm>(farms?.data.results.map(farm => [farm.id, farm]));
+            return response?.data.results.map((orchard) => ({ ...orchard, farm: farmIdMap.get(orchard.farm_id) }))
+        }
+    })
+
+    /*
     const { data: farms, isLoading: isLoadingFarms, isError: isErrorFarms, error: errorFarms } = useQuery<AxiosResponse<AeroboticsApiResponse<Farm>>>(
         ['query-home-farms'],
         fetchFarms,
@@ -32,7 +45,7 @@ export const useQueryHomeData = (): UseQueryResult<Orchard[] | undefined> => {
             }
         }
     )
-
+    
     return {
         data: orchards,
         isLoading: isLoading || isLoadingFarms,
@@ -40,4 +53,5 @@ export const useQueryHomeData = (): UseQueryResult<Orchard[] | undefined> => {
         error: error || errorFarms,
         ...others
     } as UseQueryResult<Orchard[]>;
+    */
 }

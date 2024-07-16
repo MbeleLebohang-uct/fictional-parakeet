@@ -6,6 +6,12 @@ interface TotalTreesSurveyedProps {
   orchard: Orchard
 }
 
+todo
+// use useCompoundQuery to get 
+// 1. Survey given an orchard
+// 2. for each survey, get /surveys/{id}/tree_surveys/
+// use the results to calculate the average and count trees
+
 const TotalTreesSurveyed: React.FC<TotalTreesSurveyedProps> = ({ orchard }: TotalTreesSurveyedProps) => {
   const { isLoading, isError, data: results } = useQuerySurveys({ orchard });
   if (isLoading || isError) {
