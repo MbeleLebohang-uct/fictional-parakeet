@@ -1,6 +1,7 @@
 import React from 'react'
 import { Orchard, TreeSurvey } from '../../models'
 import { useQueryTreeSurveys } from '../../hooks/useQueryTreeSurveys';
+import { BarChartOutlined } from '@ant-design/icons';
 
 interface AverageTreeNDREProps {
   orchard: Orchard
@@ -17,7 +18,10 @@ const AverageTreeNDRE: React.FC<AverageTreeNDREProps> = ({ orchard }: AverageTre
 
   const totalNDRE = results.reduce((current: number, value: TreeSurvey) => current + value.ndre, 0);
   return (
-    <div>{Math.round((results.length == 0 ? 0 : (totalNDRE/results.length)*1000))/1000}</div>
+    <div>
+      {results.length == 0 ? '0.000' : `${(Math.round((totalNDRE/results.length)*1000))/1000}`}
+      <BarChartOutlined style={{ paddingLeft: '8px' }} />
+    </div>
   )
 }
 
