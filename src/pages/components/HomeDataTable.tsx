@@ -4,6 +4,8 @@ import { Orchard } from '../../models';
 import { useQueryHomeData } from '../../hooks/useQueryHomeData';
 import TotalTreesSurveyed from './TotalTreesSurveyed';
 import LatestSurveyDate from './LatestSurveyDate';
+import AverageTreeNDVI from './AverageTreeNDVI';
+import AverageTreeNDRE from './AverageTreeNDRE';
 
 
 const columns: ColumnsType<Orchard> = [
@@ -24,6 +26,18 @@ const columns: ColumnsType<Orchard> = [
         dataIndex: 'total_trees_surveyed',
         key: 'total_trees_surveyed',
         render: (_, orchard) => <TotalTreesSurveyed orchard={orchard} />
+    },
+    {
+        title: 'Average tree ndvi',
+        dataIndex: 'average_tree_ndvi',
+        key: 'average_tree_ndvi',
+        render: (_, orchard) => <AverageTreeNDVI orchard={orchard} />
+    },
+    {
+        title: 'Average tree ndre',
+        dataIndex: 'average_tree_ndre',
+        key: 'average_tree_ndre',
+        render: (_, orchard) => <AverageTreeNDRE orchard={orchard} />
     },
     {
         title: 'Latest survey date',
