@@ -5,7 +5,7 @@ import Logo from './components/Logo';
 import ThemeToggleButton from './components/ThemeToggleButton';
 import { useThemeMode } from './theme';
 import { EApplicationPageOption } from './domain';
-import { HomePage, SurveysPage, PoliciesPage, SettingsPage } from './pages';
+import { HomePage, SeasonsPage, PoliciesPage, SettingsPage } from './pages';
 const { Sider, Header, Content } = Layout;
 
 const AppMenu: React.FC = () => {
@@ -18,8 +18,8 @@ const AppMenu: React.FC = () => {
         switch (activePage) {
             case EApplicationPageOption.Home:
                 return <HomePage />
-            case EApplicationPageOption.Surveys:
-                return <SurveysPage />
+            case EApplicationPageOption.Seasons:
+                return <SeasonsPage />
             case EApplicationPageOption.Policies:
                 return <PoliciesPage />
             case EApplicationPageOption.Settings:

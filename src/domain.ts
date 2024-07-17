@@ -3,8 +3,8 @@ import { Dispatch, SetStateAction } from "react";
 
 export enum EApplicationPageOption {
     Home = 'Home',
-    Surveys = 'Surveys',
     Policies = 'Policies',
+    Seasons = 'Seasons',
     Settings = 'Settings',
 }
 

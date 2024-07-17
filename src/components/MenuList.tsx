@@ -1,7 +1,7 @@
 import { Menu, MenuProps } from 'antd'
 
 import React from 'react'
-import { HomeOutlined, AreaChartOutlined, TeamOutlined, SettingOutlined } from '@ant-design/icons';
+import { HomeOutlined, CloudOutlined, SafetyOutlined, SettingOutlined } from '@ant-design/icons';
 import { DefaultThemeMode } from '../theme';
 import { MenuInfo } from 'rc-menu/lib/interface';
 import { EApplicationPageOption } from '../domain';
@@ -18,8 +18,8 @@ const MenuList: React.FC<MenuListProps> = ({ themeMode, setActivePage, activePag
   const onClick =  (info: MenuInfo) => setActivePage(info.key as EApplicationPageOption)
   const items: MenuItem[] = [
     {key: EApplicationPageOption.Home, icon: React.createElement(HomeOutlined), label: EApplicationPageOption.Home, onClick},
-    {key: EApplicationPageOption.Surveys, icon: React.createElement(AreaChartOutlined), label: EApplicationPageOption.Surveys, onClick},
-    {key: EApplicationPageOption.Policies, icon: React.createElement(TeamOutlined), label: EApplicationPageOption.Policies, onClick},
+    {key: EApplicationPageOption.Seasons, icon: React.createElement(CloudOutlined), label: EApplicationPageOption.Seasons, onClick},
+    {key: EApplicationPageOption.Policies, icon: React.createElement(SafetyOutlined), label: EApplicationPageOption.Policies, onClick},
     {key: EApplicationPageOption.Settings, icon: React.createElement(SettingOutlined), label: EApplicationPageOption.Settings, onClick},
   ]
   return (

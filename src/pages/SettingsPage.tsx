@@ -3,7 +3,7 @@ import React from 'react'
 const SettingsPage: React.FC = () => {
   return (
     <div>
-      Settings
+      User settings and preference such as password management might go here.
     </div>
   )
 }
