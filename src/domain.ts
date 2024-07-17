@@ -2,7 +2,7 @@ import { Method } from "axios";
 import { Dispatch, SetStateAction } from "react";
 
 export enum EApplicationPageOption {
-    Home = 'Home',
+    Home = 'home',
     Policies = 'Policies',
     Seasons = 'Seasons',
     Settings = 'Settings',
