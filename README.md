@@ -1,11 +1,28 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Me learning ReactJS.
 
-Currently, two official plugins are available:
+## Notes - Things to improve
+Multiple API calls are made to fetch Tree Surveys. This is inefficient and it can be improved by making the API allow a more comprehensinve selection and filtering. This can improve the performance since these calls will be reduced by implementing appropriate SQL queries. Example
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```GET /farming/farms/?include=orchards,surveys```
+
+One of the requirement is to display `Total trees surveyed`. Looking at the API, it was not clear how to get that information. Assumptions were made - I assumed that `Total trees surveyed` refers to `Total tree surveys`.
+
+The other thing I noticed was that some data was missing on some orchards, while some tree surveys had missing fields. i.e 
+
+```
+{
+  "id": 54733427,
+  "lat": -32.3283234,
+  "lng": 18
+}
+```
+
+Ideally as a full stack engineer I should investigate this and fix the issue. 
+
+My overall comment is a room to improve the api, especially concidering that it has a rate limit.
+
 
 ## Expanding the ESLint configuration
 

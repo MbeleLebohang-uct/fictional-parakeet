@@ -22,8 +22,6 @@ const MenuList: React.FC<MenuListProps> = ({ themeMode } : MenuListProps) => {
     {key: EApplicationPageOption.Policies, icon: React.createElement(SafetyOutlined), label: EApplicationPageOption.Policies, onClick},
     {key: EApplicationPageOption.Settings, icon: React.createElement(SettingOutlined), label: EApplicationPageOption.Settings, onClick},
   ]
-  console.log('window.href', window.location.href);
-  console.log('window.pathname', window.location.pathname);
   
   return (
     <Menu theme={themeMode} defaultSelectedKeys={[EApplicationPageOption.Home]} items={items} />
