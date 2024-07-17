@@ -16,6 +16,7 @@ The other thing I noticed was that some data was missing on some orchards, while
   "id": 54733427,
   "lat": -32.3283234,
   "lng": 18
+  // Missing fields here
 }
 ```
 
@@ -23,25 +24,35 @@ Ideally as a full stack engineer I should investigate this and fix the issue.
 
 My overall comment is a room to improve the api, especially concidering that it has a rate limit.
 
+## Screenshots
 
-## Expanding the ESLint configuration
+Dashboard as per the requirements
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/82beade2-0592-490e-b1bb-58558b83eac0">
 
-- Configure the top-level `parserOptions` property like this:
+Histogram as per the requirements.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/b3c807ab-4c90-42b0-8f14-8d00cade4e55">
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Running the application
+
+## Requirements
+
+This application was tested on node `18.18.0`. If you are using anything less than that, please concider upgrading to something `>=18.18.0`. You can use `nvm`.
+
+## Running and installing dependencies
+_Assumption - you are using npm._
+
+To install dependencies, run
+
+```$ npm i```
+
+To run the app, use
+
+```$ npm run dev```
+
+Then follow the instruction on the console.
+
+## Happy days!!!
+
+
