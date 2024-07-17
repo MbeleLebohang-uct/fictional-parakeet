@@ -10,16 +10,16 @@ import AverageTreeNDRE from './AverageTreeNDRE';
 
 const columns: ColumnsType<Orchard> = [
     {
-        title: 'Name',
+        title: 'Orchard name',
         dataIndex: 'name',
         key: 'name',
-        render: text => <a>{text}</a>,
+        render: text => <p className='item-name'>{text}</p>,
     },
     {
         title: 'Farm name',
         dataIndex: 'farm',
         key: 'farm_name',
-        render: (_, orchard) => <a>{orchard.farm?.name}</a>
+        render: (_, orchard) => <p className='item-name'>{orchard.farm?.name}</p>
     },
     {
         title: 'Total trees surveyed',

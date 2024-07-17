@@ -34,3 +34,7 @@
     border-radius: 50%;
     /* background: rgba(28, 17, 41, 0.88); */
 }
+
+.item-name {
+    color: #1677ff;
+}
