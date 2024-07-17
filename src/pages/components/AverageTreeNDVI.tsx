@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Orchard, TreeSurvey } from '../../models'
 import { useQueryTreeSurveys } from '../../hooks/useQueryTreeSurveys';
 import { BarChartOutlined } from '@ant-design/icons';
+import { Modal } from 'antd';
 
 interface AverageTreeNDVIProps {
   orchard: Orchard
@@ -9,6 +10,7 @@ interface AverageTreeNDVIProps {
 
 const AverageTreeNDVI: React.FC<AverageTreeNDVIProps> = ({ orchard }: AverageTreeNDVIProps) => {
   const { isLoading, isError, data: results } = useQueryTreeSurveys({ orchard });
+  const [ openHistogram, setOpenHistogram ] = useState(false);
 
   if (isLoading || isError) {
     return (
@@ -19,8 +21,20 @@ const AverageTreeNDVI: React.FC<AverageTreeNDVIProps> = ({ orchard }: AverageTre
   const totalNDVI = results.reduce((current: number, value: TreeSurvey) => current + value.ndvi, 0);
   return (
     <div>
-      {results.length == 0 ? '0.000' : `${(Math.round((totalNDVI/results.length)*1000))/1000}`}
-      <BarChartOutlined style={{ paddingLeft: '8px' }} />
+      <BarChartOutlined onClick={() => setOpenHistogram(true)} style={{ paddingRight: '8px' }} />
+      {results.length == 0 ? 0 : (Math.round((totalNDVI/results.length)*1000))/1000}
+      <Modal
+        open={openHistogram}
+        title={`NDVI Histogram | ${orchard.name}`}
+        onOk={() => setOpenHistogram(false)}
+        onCancel={() => setOpenHistogram(false)}
+      >
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+        <p>Some contents...</p>
+      </Modal>
     </div>
   )
 }
