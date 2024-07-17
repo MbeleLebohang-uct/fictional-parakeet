@@ -47,18 +47,6 @@ const columns: ColumnsType<Orchard> = [
     },
 ];
 
-const loadingData: Orchard[] = [{
-    id: 0, 
-    name: '', 
-    farm_id: 0, 
-    crop_type_name: '', 
-    polygon: '', 
-    hectares: 0,
-    survey_count: null, 
-    cultivar_name: '', 
-    external_id: null, 
-}]
-
 const HomeDataTable: React.FC = () => {
     const { isLoading, isError, error, data: results } = useQueryHomeData();
     if (isError) {
@@ -68,7 +56,7 @@ const HomeDataTable: React.FC = () => {
     }
     
     return (
-        <Table loading={isLoading} columns={columns} dataSource={results || loadingData} rowKey={(item) => `${item.id}/${item.id}`} />
+        <Table loading={isLoading} columns={columns} dataSource={results} rowKey={(item) => `${item.id}/${item.id}`} />
     )
 }
 
