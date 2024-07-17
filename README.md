@@ -25,11 +25,12 @@ Then follow the instruction on the console.
 
 Dashboard as per the requirements
 
-<img width="600" alt="image" src="https://github.com/user-attachments/assets/82beade2-0592-490e-b1bb-58558b83eac0">
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/76172b3c-ba6f-4aa5-882c-eaa283cccec7">
 
 Histogram as per the requirements.
 
-<img width="600" alt="image" src="https://github.com/user-attachments/assets/b3c807ab-4c90-42b0-8f14-8d00cade4e55">
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/c2213b8a-67e3-4bd9-8219-1d7bd546bbf1">
+
 
 ## Notes - Things to improve
 Multiple API calls are made to fetch Tree Surveys. This is inefficient and it can be improved by making the API allow a more comprehensinve selection and filtering. This can improve the performance since these calls will be reduced by implementing appropriate SQL queries. Example
